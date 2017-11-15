@@ -1,0 +1,44 @@
+.wrapper {
+	width: 100%;
+}
+h1 {
+	text-align: center;
+}
+html {
+	background-image: url("../images/tatooinebackground.jpg");
+}
+.label {
+	width:100%;
+	float: clear;
+}
+img {
+	width:150px;
+}
+.charimg {
+	width:150px;
+	display: inline-block;
+}
+div {
+	
+}
+h2 {
+	width:100%;
+}
+div {
+	
+}
+#han {
+
+}
+#kylo {
+
+}
+#darth {
+
+}
+#emporer {
+
+}
+#gameActivity {
+	
+}
