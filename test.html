@@ -16,22 +16,23 @@
 <body>
 	<div class="wrapper">
 		<h1>Star Wars RPG</h1>
+		<div  id="action"></div><div  id="actionBack"></div>
 		<div>
 		<div><p id="gameActivity">Pick your hero</p>
 		</div>
 		</div>
-		<div><p><h2>Character List</h2></p>
-			<img class="charimg" id="han" src="assets/images/hansolo.jpg">
-			<img class="charimg" id="darth" src="assets/images/darthvader.jpg">
-			<img class="charimg" id="kylo" src="assets/images/kyloren.jpg">
-			<img class="charimg" id="emporer" src="assets/images/theemperor.jpg">
+		<div class="charList"><p><h2>Character List</h2></p>
+			<img class="charimg" id="han" src="assets/images/hansolo.jpg" value="han">
+			<img class="charimg" id="darth" src="assets/images/darthvader.jpg" value="darth">
+			<img class="charimg" id="kylo" src="assets/images/kyloren.jpg" value="kylo">
+			<img class="charimg" id="emperor" src="assets/images/theemperor.jpg" value="emperor">
 		</div>
 		<div><p><h2>Your Character</h2></p>
 			<div id="hero"></div>
 		</div>
 	</div>
 		<div class="label"><p><h2>Enemies Available</h2></p>
-			<div class="enemiesAvail"></div>
+			<div id="avail" class="enemiesAvail"></div>
 		</div>
 	</div>
 	<div>
@@ -40,7 +41,7 @@
 		<button id="attack">Attack!</button>
 	</div>
 	<div>
-		<div class="label"><p><h2>Defender</h2></p>
+		<div class="op" id="defender"><p><h2>Defender</h2></p>
 		</div>
 	</div>
 	

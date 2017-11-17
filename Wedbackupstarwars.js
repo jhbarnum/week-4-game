@@ -1,37 +1,33 @@
 
 
 
-
-   var han = {
+var characters = {
+    han: {
         name: 'HanSolo',
-        id: '#han',
         health: 120,
         attack: 8,
         enemyAttackBack: 8
-    } 
-    var darth = {
+    }, 
+    darth: {
         name: 'DarthVader',
-        id: '#darth',
         health: 100,
         attack: 14,
         enemyAttackBack: 5
-    }
-    var kylo = {
+    }, 
+    kylo: {
         name: 'KyloRen',
-        id: 'kylo',
         health: 150,
         attack: 8,
         enemyAttackBack: 20
-    }
-    var emperor = {
+    }, 
+    emperor: {
         name: 'theEmperor',
-        id: 'emperor',
         health: 180,
         attack: 7,
         enemyAttackBack: 20
     }
-
-
+};
+console.log(characters.emperor.name);
 // variable to store the chosen character
 var hero = {};
 // will store the opponent
@@ -39,19 +35,41 @@ var defender = {};
 
 
 var defenderObj = {};
-
+var heroHealth;
+var defenderHealth;
 var heroAttack;
 var defenderAttack;
 var heroImg;
 var defenderImg;
-var yourCharSelected = false;
+var heropic = true;
 
+//function hanHero() {
+	//	$("#han").removeClass(".charimg").addClass(".hero");
+	//	$("#hero").append("<img id='han' src='assets/images/hansolo.jpg'/>");
+	//	$("#kylo").removeClass(".charimg").addClass(".enemiesAvail");
+	//	$(".enemiesAvail").append("<img id='kylo' src='assets/images/kyloren.jpg'/>"); 
+	//	$("#darth").removeClass(".charimg").addClass(".enemiesAvail");
+	//	$(".enemiesAvail").append("<img id='darth' src='assets/images/darthvader.jpg'/>"); 
+	//	$("#emporer").removeClass(".charimg").addClass(".enemiesAvail");
+	//	$(".enemiesAvail").append("<img id='emperor' src='assets/images/theemperor.jpg'/>"); 
+	//	}
+
+
+
+
+
+
+$(document).ready(function() {
+// $(".charimg").click(function(){
+//         $(".charimg").each(function(){
+//             alert($(this).text())
+//         });
+//     });
 
 function hanHeroClick() {
 	var hanHeroButton = $("#han");
 	hanHeroButton.addClass(".hero");
 	$("#hero").append(hanHeroButton);
-	console.log("#han");
 	//changes start here
 	var darthDefenderBtn = $("#darth");
 	darthDefenderBtn.addClass(".op");
@@ -64,10 +82,8 @@ function hanHeroClick() {
 	var emperorDefenderBtn = $("#emperor");
 	emperorDefenderBtn.addClass(".op");
 	$("#avail").append(emperorDefenderBtn);
-	//document.getElementById('hero').innerHTML = hero.name;
 }
 function darthHeroClick() {
-	
 	var darthHeroButton = $("#darth");
 	darthHeroButton.addClass(".hero");
 	$("#hero").append(darthHeroButton);
@@ -83,10 +99,9 @@ function darthHeroClick() {
 	var hanDefenderButton = $("#han");
 	hanDefenderButton.addClass(".op");
 	$("#avail").append(hanDefenderButton);
-	
 }
 function kyloHeroClick() {
-	var kyloHeroButton = $("kylo");
+	var kyloHeroButton = $("#kylo");
 	kyloHeroButton.addClass(".hero");
 	$("#hero").append(kyloHeroButton);
 	//
@@ -120,7 +135,6 @@ function emperorHeroClick() {
 	$("#avail").append(hanDefenderButton);
 }
 
-
 function hanDefenderClick() {
 	var hanDefenderBtn = $("#han");
 	$("#defender").append(hanDefenderBtn);
@@ -143,79 +157,27 @@ $(document).ready(function() {
 
 
 
-	
-
-
-
 	$("#darth").on("click", function() {
-		if (yourCharSelected == false) {
 		darthHeroClick();
-		hero = darth;
-		yourCharSelected = true;
-	} else {
-		darthDefenderClick();
-	}	defender = darth;
-	});	
-	
-
-	$("#han").on("click", function() {	
-		if (yourCharSelected == false) {
-			//console.log(yourCharSelected);
-			//console.log(han);
-			hanHeroClick();
-			hero = han;
-			yourCharSelected = true;
-		} else {
-			hanDefenderClick();
-			defender = han;
-		}
+		//$(".charimg").hide();
 	});
-
-	$("#kylo").on("click", function() {	
-		if (yourCharSelected == false) {
-			kyloHeroClick();
-			hero = kylo;
-			yourCharSelected = true;
-		} else {
-			kyloDefenderClick();
-			defender = kylo;
-		}
+	$("#han").on("click", function() {
+		console.log("I worked");
+		hanHeroClick();	
 	});
-																	//on click (as long as hero !== to onclick item)
-	$("#emperor").on("click", function() {	
-		if (yourCharSelected == false) {
-			emperorHeroClick();
-			hero = emperor;
-			yourCharSelected = true;
-		} else {
-			emperorDefenderClick();
-			defender = emperor;
-		}
+	$("#kylo").on("click", function() {
+		kyloHeroClick();	
 	});
-// var heroHealth = hero.health;
-// 		var defenderHealth  = defender.health;
-
-	$("#attack").on("click", function() {	
-		if (hero.health > 0) {
-
-		defender.health = defender.health - hero.attack;
-				hero.health = hero.health - defender.attack;
-				hero.attack = hero.attack+6;
-				console.log(hero.attack + "attack");
-
-		
-		console.log(defender.name);
-		console.log(defender.health);
-		console.log(hero.name);
-		console.log(hero.health);
-		document.getElementById('action').innerHTML = "You attacked " + defender.name + " for " + hero.attack + " points";
-		document.getElementById('actionBack').innerHTML = defender.name + " hit back for " + defender.attack + " points";
-		} else {
-	alert("game over")
-	}
+	$("#emperor").on("click", function() {
+		emperorHeroClick();	
 	});
-
+}
+for (var i = 0; i < 1; i++) {
+	var clickCounter2 = i;
+	$("#han").on("click", function() {
+		console.log("hanDefenderClick");
+		hanDefenderClick();	
+	});
+}
 
 });
-	
-
