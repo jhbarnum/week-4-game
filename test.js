@@ -45,6 +45,7 @@ var defenderAttack;
 var heroImg;
 var defenderImg;
 var yourCharSelected = false;
+var yourDefSelected = false;
 
 
 function hanHeroClick() {
@@ -152,9 +153,12 @@ $(document).ready(function() {
 		darthHeroClick();
 		hero = darth;
 		yourCharSelected = true;
-	} else {
+	} else if (yourDefSelected == false) {
+
 		darthDefenderClick();
-	}	defender = darth;
+		defender = darth;
+		yourDefSelected = true;
+	}	
 	});	
 	
 
@@ -165,9 +169,11 @@ $(document).ready(function() {
 			hanHeroClick();
 			hero = han;
 			yourCharSelected = true;
-		} else {
+		} else if (yourDefSelected == false){
+
 			hanDefenderClick();
 			defender = han;
+			yourDefSelected = true;
 		}
 	});
 
@@ -176,9 +182,10 @@ $(document).ready(function() {
 			kyloHeroClick();
 			hero = kylo;
 			yourCharSelected = true;
-		} else {
+		} else if (yourDefSelected == false){
 			kyloDefenderClick();
 			defender = kylo;
+			yourDefSelected = true;
 		}
 	});
 																	//on click (as long as hero !== to onclick item)
@@ -187,21 +194,24 @@ $(document).ready(function() {
 			emperorHeroClick();
 			hero = emperor;
 			yourCharSelected = true;
-		} else {
+		} else if (yourDefSelected == false){
 			emperorDefenderClick();
 			defender = emperor;
+			yourDefSelected = true;
 		}
 	});
 // var heroHealth = hero.health;
 // 		var defenderHealth  = defender.health;
 
 	$("#attack").on("click", function() {	
-		if (hero.health > 0) {
+		if (hero.health > 1) {
 
 		defender.health = defender.health - hero.attack;
-				hero.health = hero.health - defender.attack;
-				hero.attack = hero.attack+6;
-				console.log(hero.attack + "attack");
+		hero.health = hero.health - defender.attack;
+		hero.attack = hero.attack+6;
+
+
+		console.log(hero.attack + "attack");
 
 		
 		console.log(defender.name);
@@ -211,8 +221,19 @@ $(document).ready(function() {
 		document.getElementById('action').innerHTML = "You attacked " + defender.name + " for " + hero.attack + " points";
 		document.getElementById('actionBack').innerHTML = defender.name + " hit back for " + defender.attack + " points";
 		} else {
-	alert("game over")
+			alert('game over');
+		}
+	
+		
+	
+		if (defender.health < 0) {
+			yourDefSelected = false;
+			
+	alert("pick another opponent")
+	
+	
 	}
+	
 	});
 
 

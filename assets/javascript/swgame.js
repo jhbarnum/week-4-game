@@ -1,147 +1,241 @@
 
 
 
-var characters = {
-    han: {
+
+   var han = {
         name: 'HanSolo',
+        id: '#han',
         health: 120,
         attack: 8,
         enemyAttackBack: 8
-    }, 
-    darth: {
+    } 
+    var darth = {
         name: 'DarthVader',
+        id: '#darth',
         health: 100,
         attack: 14,
         enemyAttackBack: 5
-    }, 
-    kylo: {
+    }
+    var kylo = {
         name: 'KyloRen',
+        id: 'kylo',
         health: 150,
         attack: 8,
         enemyAttackBack: 20
-    }, 
-    emperor: {
+    }
+    var emperor = {
         name: 'theEmperor',
+        id: 'emperor',
         health: 180,
         attack: 7,
         enemyAttackBack: 20
     }
-};
-console.log(characters.emperor.name);
+
+
 // variable to store the chosen character
 var hero = {};
 // will store the opponent
 var defender = {};
 
+
 var defenderObj = {};
-var heroHealth;
-var defenderHealth;
+
 var heroAttack;
 var defenderAttack;
 var heroImg;
 var defenderImg;
-var heropic = true;
-$(document).ready(function() {
-if (heropic == true){
-	$("#han").on("click", function() {
-		$("#han").removeClass(".charimg").addClass(".hero");
-		$("#hero").append("<img id='han' src='assets/images/hansolo.jpg'/>");
-		$("#kylo").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='kylo' src='assets/images/kyloren.jpg'/>"); 
-		$("#darth").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='darth' src='assets/images/darthvader.jpg'/>"); 
-		$("#emporer").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='emperor' src='assets/images/theemperor.jpg'/>"); 
-		
-		$(".charimg").hide();
-	});
-	$("#darth").on("click", function() {
-		$("#darth").removeClass(".charimg").addClass(".hero");
-		$("#hero").append("<img id='darth' src='assets/images/darthvader.jpg'/>");
-		$(".charimg").hide();
-		$("#kylo").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='kylo' src='assets/images/kyloren.jpg'/>"); 
-		$("#han").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='han' src='assets/images/hansolo.jpg'/>"); 
-		$("#emporer").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='emperor' src='assets/images/theemperor.jpg'/>"); 
-		
-		
-	});
-	$("#kylo").on("click", function() {
-		$("#kylo").removeClass(".charimg").addClass(".hero");
-		$("#hero").append("<img id='kylo' src='assets/images/kyloren.jpg'/>");
-		$(".charimg").hide();
-		$("#han").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='han' src='assets/images/hansolo.jpg'/>"); 
-		$("#darth").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='darth' src='assets/images/darthvader.jpg'/>"); 
-		$("#emporer").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='emperor' src='assets/images/theemperor.jpg'/>"); 
-		
-	});
-	$("#emporer").on("click", function() {
-		$("#han").removeClass(".charimg").addClass(".hero");
-		$("#hero").append("<img id='emperor' src='assets/images/theemperor.jpg'/>");
-		$(".charimg").hide();
-		$("#kylo").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='kylo' src='assets/images/kyloren.jpg'/>"); 
-		$("#darth").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='darth' src='assets/images/darthvader.jpg'/>"); 
-		$("#han").removeClass(".charimg").addClass(".enemiesAvail");
-		$(".enemiesAvail").append("<img id='han' src='assets/images/hansolo.jpg'/>"); 
-		heropic = false;
-	});
-		
-		console.log(heropic)
-	}
-else {
-	$("#han").on("click", function() {
-		//$("#han").removeClass(".enemiesAvail").addClass(".defender");
-		$("#defender").append("<img id='han' src='assets/images/hansolo.jpg'/>");
-	});
+var yourCharSelected = false;
+var yourDefSelected = false;
+
+
+function hanHeroClick() {
+	var hanHeroButton = $("#han");
+	hanHeroButton.addClass(".hero");
+	$("#hero").append(hanHeroButton);
+	console.log("#han");
+	//changes start here
+	var darthDefenderBtn = $("#darth");
+	darthDefenderBtn.addClass(".op");
+	$("#avail").append(darthDefenderBtn);
+	//
+	var kyloDefenderBtn = $("#kylo");
+	kyloDefenderBtn.addClass(".op");
+	$("#avail").append(kyloDefenderBtn);
+	//
+	var emperorDefenderBtn = $("#emperor");
+	emperorDefenderBtn.addClass(".op");
+	$("#avail").append(emperorDefenderBtn);
+	//document.getElementById('hero').innerHTML = hero.name;
 }
-});
+function darthHeroClick() {
+	
+	var darthHeroButton = $("#darth");
+	darthHeroButton.addClass(".hero");
+	$("#hero").append(darthHeroButton);
+	//
+	var kyloDefenderBtn = $("#kylo");
+	kyloDefenderBtn.addClass(".op");
+	$("#avail").append(kyloDefenderBtn);
+	//
+	var emperorDefenderBtn = $("#emperor");
+	emperorDefenderBtn.addClass(".op");
+	$("#avail").append(emperorDefenderBtn);
+	//
+	var hanDefenderButton = $("#han");
+	hanDefenderButton.addClass(".op");
+	$("#avail").append(hanDefenderButton);
+	
+}
+function kyloHeroClick() {
+	var kyloHeroButton = $("kylo");
+	kyloHeroButton.addClass(".hero");
+	$("#hero").append(kyloHeroButton);
+	//
+	var darthDefenderBtn = $("#darth");
+	darthDefenderBtn.addClass(".op");
+	$("#avail").append(darthDefenderBtn);
+	//
+	var emperorDefenderBtn = $("#emperor");
+	emperorDefenderBtn.addClass(".op");
+	$("#avail").append(emperorDefenderBtn);
+	//
+	var hanDefenderButton = $("#han");
+	hanDefenderButton.addClass(".op");
+	$("#avail").append(hanDefenderButton);
+}
+function emperorHeroClick() {
+	var emperorHeroButton = $("#emperor");
+	emperorHeroButton.addClass(".hero");
+	$("#hero").append(emperorHeroButton);
+	//
+	var darthDefenderBtn = $("#darth");
+	darthDefenderBtn.addClass(".op");
+	$("#avail").append(darthDefenderBtn);
+	//
+	var kyloDefenderBtn = $("#kylo");
+	kyloDefenderBtn.addClass(".op");
+	$("#avail").append(kyloDefenderBtn);
+	//
+	var hanDefenderButton = $("#han");
+	hanDefenderButton.addClass(".op");
+	$("#avail").append(hanDefenderButton);
+}
+
+
+function hanDefenderClick() {
+	var hanDefenderBtn = $("#han");
+	$("#defender").append(hanDefenderBtn);
+}
+function darthDefenderClick() {
+	var darthDefenderBtn = $("#darth");
+	$("#defender").append(darthDefenderBtn);
+}
+function kyloDefenderClick() {
+	var kyloDefenderBtn = $("#kylo");
+	$("#defender").append(kyloDefenderBtn);
+}
+function emperorDefenderClick() {
+	var emperorDefenderBtn = $("#emperor");
+	$("#defender").append(emperorDefenderBtn);
+}
+
+
+$(document).ready(function() {
 
 
 
-//function createDefenderList() {
- // $(".charimg").removeClass("charimg").addClass(".enemiesAvail");
- // $(".enemiesAvail").append($(".defenderImg"));
+	
 
-		//$("#hero").append("<img id='han' src='assets/images/hansolo.jpg'/>");
-		//for (var i = 0; i < characters.length; i++) {
-		//	var enemy1 = defenderObj[i];
+
+
+	$("#darth").on("click", function() {
+		if (yourCharSelected == false) {
+		darthHeroClick();
+		hero = darth;
+		yourCharSelected = true;
+	} else if (yourDefSelected == false) {
+
+		darthDefenderClick();
+		defender = darth;
+		yourDefSelected = true;
+	}	
+	});	
+	
+
+	$("#han").on("click", function() {	
+		if (yourCharSelected == false) {
+			//console.log(yourCharSelected);
+			//console.log(han);
+			hanHeroClick();
+			hero = han;
+			yourCharSelected = true;
+		} else if (yourDefSelected == false){
+
+			hanDefenderClick();
+			defender = han;
+			yourDefSelected = true;
+		}
+	});
+
+	$("#kylo").on("click", function() {	
+		if (yourCharSelected == false) {
+			kyloHeroClick();
+			hero = kylo;
+			yourCharSelected = true;
+		} else if (yourDefSelected == false){
+			kyloDefenderClick();
+			defender = kylo;
+			yourDefSelected = true;
+		}
+	});
+																	//on click (as long as hero !== to onclick item)
+	$("#emperor").on("click", function() {	
+		if (yourCharSelected == false) {
+			emperorHeroClick();
+			hero = emperor;
+			yourCharSelected = true;
+		} else if (yourDefSelected == false){
+			emperorDefenderClick();
+			defender = emperor;
+			yourDefSelected = true;
+		}
+	});
+// var heroHealth = hero.health;
+// 		var defenderHealth  = defender.health;
+
+	$("#attack").on("click", function() {	
+		if (hero.health > 1) {
+
+		defender.health = defender.health - hero.attack;
+		hero.health = hero.health - defender.attack;
+		hero.attack = hero.attack+6;
+
+
+		console.log(hero.attack + "attack");
+
+		
+		console.log(defender.name);
+		console.log(defender.health);
+		console.log(hero.name);
+		console.log(hero.health);
+		document.getElementById('action').innerHTML = "You attacked " + defender.name + " for " + hero.attack + " points";
+		document.getElementById('actionBack').innerHTML = defender.name + " hit back for " + defender.attack + " points";
+		} else {
+			alert('game over');
+		}
+	
+		
+	
+		if (defender.health < 0) {
+			yourDefSelected = false;
 			
-		 
-	//	$(".enemiesAvail").append("<img id='darth''kylo' assets/images/darthvader.jpg"); 
-	//	$(".enemiesAvail").append("<img id='kylo' assets/images/kyloren.jpg");
-	//	$(".enemiesAvail").append("<img id='han' src='assets/images/theemperor.jpg'/>");
-	//	});
-		 //puts the image into the hero div after click
-      
-	//$(".charimg#darth").on("click", function() {
-	//	$("#hero").append("<img id='han' src='assets/images/darthvader.jpg'/>"); 
-	//	$(".charimg").hide(); //puts the image into the hero div after click
-    //  });
-	//$(".charimg#kylo").on("click", function() {
-	//	$("#hero").append("<img id='han' src='assets/images/kyloren.jpg'/>"); 
-	//	$(".charimg").hide(); //puts the image into the hero div after click
-    //  });
-	//$(".charimg#emporer").on("click", function() {
-	//	$("#hero").append("<img id='han' src='assets/images/theemperor.jpg'/>"); 
-	//	$(".charimg").hide(); //puts the image into the hero div after click
-    //  });
-
-//}); 
-
-//console.log(characters.theEmoporer.imageUrl)
-    
-//select a hero, all others are moved to the 'enemies' list
+	alert("pick another opponent")
+	
+	
+	}
+	
+	});
 
 
-//cick Attack to begin fighting. Each hit removes health from your player and enemy.
-
-//if your player's health points hit 0, you lose.
-
-//if the enemy's health points hit 0 first, you play next enemy until there are no more.
+});
+	
