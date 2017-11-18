@@ -1,6 +1,6 @@
 
 
-
+// set object of possible characters
 
    var han = {
         name: 'HanSolo',
@@ -39,7 +39,7 @@ var defender = {};
 
 
 var defenderObj = {};
-
+var winCount = 0;
 var heroAttack;
 var defenderAttack;
 var heroImg;
@@ -47,11 +47,12 @@ var defenderImg;
 var yourCharSelected = false;
 var yourDefSelected = false;
 
-
+//sets han as hero and places all others in the defender's box
 function hanHeroClick() {
 	var hanHeroButton = $("#han");
 	hanHeroButton.addClass(".hero");
 	$("#hero").append(hanHeroButton);
+	yourCharSelected = true;
 	console.log("#han");
 	//changes start here
 	var darthDefenderBtn = $("#darth");
@@ -67,6 +68,7 @@ function hanHeroClick() {
 	$("#avail").append(emperorDefenderBtn);
 	//document.getElementById('hero').innerHTML = hero.name;
 }
+//sets darth as hero and places all others in the defender's box
 function darthHeroClick() {
 	
 	var darthHeroButton = $("#darth");
@@ -86,6 +88,7 @@ function darthHeroClick() {
 	$("#avail").append(hanDefenderButton);
 	
 }
+//sets kylo as hero and places all others in the defender's box
 function kyloHeroClick() {
 	var kyloHeroButton = $("kylo");
 	kyloHeroButton.addClass(".hero");
@@ -103,6 +106,7 @@ function kyloHeroClick() {
 	hanDefenderButton.addClass(".op");
 	$("#avail").append(hanDefenderButton);
 }
+//sets emperor as hero and places all others in the defender's box
 function emperorHeroClick() {
 	var emperorHeroButton = $("#emperor");
 	emperorHeroButton.addClass(".hero");
@@ -121,25 +125,28 @@ function emperorHeroClick() {
 	$("#avail").append(hanDefenderButton);
 }
 
-
+// sets han as defender 
 function hanDefenderClick() {
 	var hanDefenderBtn = $("#han");
 	$("#defender").append(hanDefenderBtn);
 }
+// set darth as defender
 function darthDefenderClick() {
 	var darthDefenderBtn = $("#darth");
 	$("#defender").append(darthDefenderBtn);
 }
+// set kylo as defender
 function kyloDefenderClick() {
 	var kyloDefenderBtn = $("#kylo");
 	$("#defender").append(kyloDefenderBtn);
 }
+// set emperor as defender
 function emperorDefenderClick() {
 	var emperorDefenderBtn = $("#emperor");
 	$("#defender").append(emperorDefenderBtn);
 }
 
-
+//makes sure the page is loaded before page functions
 $(document).ready(function() {
 
 
@@ -147,13 +154,13 @@ $(document).ready(function() {
 	
 
 
-
+// sets darth as the hero, or defender depending on the order of clicks
 	$("#darth").on("click", function() {
 		if (yourCharSelected == false) {
 		darthHeroClick();
 		hero = darth;
 		yourCharSelected = true;
-	} else if (yourDefSelected == false) {
+	} else if (yourDefSelected == false && hero != darth) {
 
 		darthDefenderClick();
 		defender = darth;
@@ -161,76 +168,77 @@ $(document).ready(function() {
 	}	
 	});	
 	
-
+// sets han as the hero, or defender depending on the order of clicks
 	$("#han").on("click", function() {	
 		if (yourCharSelected == false) {
 			//console.log(yourCharSelected);
 			//console.log(han);
 			hanHeroClick();
 			hero = han;
-			yourCharSelected = true;
-		} else if (yourDefSelected == false){
+			//yourCharSelected = true;
+		} else if (yourDefSelected == false && hero != han){
 
 			hanDefenderClick();
 			defender = han;
 			yourDefSelected = true;
 		}
 	});
-
+// sets kylo as the hero, or defender depending on the order of clicks
 	$("#kylo").on("click", function() {	
 		if (yourCharSelected == false) {
 			kyloHeroClick();
 			hero = kylo;
 			yourCharSelected = true;
-		} else if (yourDefSelected == false){
+		} else if (yourDefSelected == false && hero != kylo){
 			kyloDefenderClick();
 			defender = kylo;
 			yourDefSelected = true;
 		}
 	});
-																	//on click (as long as hero !== to onclick item)
+// sets emperor as the hero, or defender depending on the order of clicks															//on click (as long as hero !== to onclick item)
 	$("#emperor").on("click", function() {	
 		if (yourCharSelected == false) {
 			emperorHeroClick();
 			hero = emperor;
 			yourCharSelected = true;
-		} else if (yourDefSelected == false){
+		} else if (yourDefSelected == false && hero != emperor){
 			emperorDefenderClick();
 			defender = emperor;
 			yourDefSelected = true;
 		}
 	});
-// var heroHealth = hero.health;
-// 		var defenderHealth  = defender.health;
 
+// begins the attack.
 	$("#attack").on("click", function() {	
 		if (hero.health > 1) {
-
+// reduces fighters health points each attack click
 		defender.health = defender.health - hero.attack;
 		hero.health = hero.health - defender.attack;
+// increases the hero attack by 6 each attack
 		hero.attack = hero.attack+6;
-
-
-		console.log(hero.attack + "attack");
-
-		
-		console.log(defender.name);
-		console.log(defender.health);
-		console.log(hero.name);
-		console.log(hero.health);
+// displays health data
+		$('#herohealth').html(hero.health)
+		$('#defenderhealth').html(defender.health)
 		document.getElementById('action').innerHTML = "You attacked " + defender.name + " for " + hero.attack + " points";
 		document.getElementById('actionBack').innerHTML = defender.name + " hit back for " + defender.attack + " points";
 		} else {
+			//ends game if your health drops below 0
 			alert('game over');
 		}
 	
 		
-	
-		if (defender.health < 0) {
+	// allows you to pick a new defender to fight unless you have beat them all
+		if (defender.health < 0 && winCount < 3) {
 			yourDefSelected = false;
-			
-	alert("pick another opponent")
-	
+			winCount++;
+		if (winCount == 1 || winCount == 2){
+			alert("pick another opponent")
+		}
+		// you beat them all!!!! YOU WIN!!!!!
+		if (winCount == 3) {
+			alert('You Win!')
+			 location.reload();
+		}
 	
 	}
 	
@@ -239,3 +247,4 @@ $(document).ready(function() {
 
 });
 	
+

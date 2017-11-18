@@ -15,39 +15,73 @@
 </head>
 <body>
 	<div class="wrapper">
-		//<nav class="navbar navbar-default">
-		<h1>Star Wars RPG</h1>
-		<div  id="action"></div><div  id="actionBack"></div>
-		<div>
-		<div><p id="gameActivity">Pick your hero</p>
+		<div class="jumbotron jumbotron-fluid">
+  			<div class="container">
+    			<h1 class="display-2">Star Wars RPG</h1>
+    				<p class="lead" id="gameActivity">Pick your hero and then pick an opponent</p>
+    				<div class="row">
+    					<div class="col-md-4">
+    						<p class="lead">Your Health</p>
+    						<p class="lead" id="herohealth"></p>
+    					</div>
+    					<div class="col-md-4">
+    						<p class="lead" id="action"></p>
+    						<p class="lead" id="actionBack"></p>
+    					</div>
+    					<div class="col-md-4">
+    						<p class="lead">Defender Health</p>
+    						<p class="lead" id="defenderhealth"></p>	
+    					</div>		
+    				</div>
+  			</div>
 		</div>
+		
+		<!-- <div  id="action"></div><div  id="actionBack"></div> -->
+		<div class="row">
+			<div class="col-md-5">
+				</div>
+			<div class="col-md-7">
+				<button class="lead" id="attack">Attack!</button>
+			</div>
 		</div>
-		<div class="charList"><p><h2>Character List</h2></p>
-			<img class="charimg" id="han" src="assets/images/hansolo.jpg" value="han">
-			<img class="charimg" id="darth" src="assets/images/darthvader.jpg" value="darth">
-			<img class="charimg" id="kylo" src="assets/images/kyloren.jpg" value="kylo">
-			<img class="charimg" id="emperor" src="assets/images/theemperor.jpg" value="emperor">
+		
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-6">
+				<div class="charList">
+					<img class="charimg" id="han" src="assets/images/hansolo.jpg" value="han">
+					<img class="charimg" id="darth" src="assets/images/darthvader.jpg" value="darth">
+					<img class="charimg" id="kylo" src="assets/images/kyloren.jpg" value="kylo">
+					<img class="charimg" id="emperor" src="assets/images/theemperor.jpg" value="emperor">
+				</div>
+			</div>
+			
 		</div>
-		<div><p><h2>Your Character</h2></p>
-			<div id="hero"></div>
+		<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-6">
+					<div><p><h2>Your Character</h2></p>
+						<div id="hero"></div>
+					</div>
+				</div>
+			<div class="col-md-4">
+				<div class="op" id="defender"><p><h2>Defender</h2></p>
+				</div>
+			</div>		
 		</div>
-	</div>
-		<div class="label"><p><h2>Enemies Available</h2></p>
-			<div id="avail" class="enemiesAvail"></div>
-		</div>
-	</div>
-	<div>
-		<div class="label"><p><h2>Fight Section</h2></p>
-		</div>
-		<button id="attack">Attack!</button>
-	</div>
-	<div>
-		<div class="op" id="defender"><p><h2>Defender</h2></p>
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-10">
+				<div class="label"><p><h2>Enemies Available</h2></p>
+					<div id="avail" class="enemiesAvail"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
-
-
 
 </body>
 </html>

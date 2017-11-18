@@ -1,6 +1,9 @@
 .wrapper {
 	width: 100%;
+	background-image: url("../images/tatooinebackground.jpg");
+	color: white;
 }
+body
 h1 {
 	text-align: center;
 }
@@ -42,3 +45,14 @@ div {
 #gameActivity {
 	
 }
+.lead {
+	text-align: center;
+}
+.container {
+	background-image: url("../images/tatooinebackground.jpg");
+}
+.jumbotron {
+	background-image: url("../images/tatooinebackground.jpg");
+	color:black;
+}
+

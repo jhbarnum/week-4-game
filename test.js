@@ -39,7 +39,7 @@ var defender = {};
 
 
 var defenderObj = {};
-
+var winCount = 0;
 var heroAttack;
 var defenderAttack;
 var heroImg;
@@ -52,6 +52,7 @@ function hanHeroClick() {
 	var hanHeroButton = $("#han");
 	hanHeroButton.addClass(".hero");
 	$("#hero").append(hanHeroButton);
+	yourCharSelected = true;
 	console.log("#han");
 	//changes start here
 	var darthDefenderBtn = $("#darth");
@@ -153,7 +154,7 @@ $(document).ready(function() {
 		darthHeroClick();
 		hero = darth;
 		yourCharSelected = true;
-	} else if (yourDefSelected == false) {
+	} else if (yourDefSelected == false && hero != darth) {
 
 		darthDefenderClick();
 		defender = darth;
@@ -168,8 +169,8 @@ $(document).ready(function() {
 			//console.log(han);
 			hanHeroClick();
 			hero = han;
-			yourCharSelected = true;
-		} else if (yourDefSelected == false){
+			//yourCharSelected = true;
+		} else if (yourDefSelected == false && hero != han){
 
 			hanDefenderClick();
 			defender = han;
@@ -182,7 +183,7 @@ $(document).ready(function() {
 			kyloHeroClick();
 			hero = kylo;
 			yourCharSelected = true;
-		} else if (yourDefSelected == false){
+		} else if (yourDefSelected == false && hero != kylo){
 			kyloDefenderClick();
 			defender = kylo;
 			yourDefSelected = true;
@@ -194,7 +195,7 @@ $(document).ready(function() {
 			emperorHeroClick();
 			hero = emperor;
 			yourCharSelected = true;
-		} else if (yourDefSelected == false){
+		} else if (yourDefSelected == false && hero != emperor){
 			emperorDefenderClick();
 			defender = emperor;
 			yourDefSelected = true;
@@ -210,7 +211,8 @@ $(document).ready(function() {
 		hero.health = hero.health - defender.attack;
 		hero.attack = hero.attack+6;
 
-
+		$('#herohealth').html(hero.health)
+		$('#defenderhealth').html(defender.health)
 		console.log(hero.attack + "attack");
 
 		
@@ -226,11 +228,16 @@ $(document).ready(function() {
 	
 		
 	
-		if (defender.health < 0) {
+		if (defender.health < 0 && winCount < 3) {
 			yourDefSelected = false;
-			
-	alert("pick another opponent")
-	
+			winCount++;
+		if (winCount == 1 || winCount == 2){
+			alert("pick another opponent")
+		}
+		if (winCount == 3) {
+			alert('You Win!')
+			 location.reload();
+		}
 	
 	}
 	
